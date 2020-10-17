@@ -1,5 +1,6 @@
 (executable
  (name doi2bib)
  (public_name doi2bib)
- (libraries astring clap cohttp-lwt-unix ezxmlm)
+ (package doi2bib)
+ (libraries clap cohttp-lwt-unix doi2bib)
  (preprocess future_syntax))

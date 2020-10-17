@@ -21,3 +21,11 @@
   (ezxmlm (>= 1.1.0))
   (tls (>= 0.12.0))
  ))
+
+(package
+ (name doi2bib-jsoo)
+ (synopsis "Little CLI tool to get bibtex entries out of doi or arxiv ids")
+ (depends
+  (js_of_ocaml (>= 3.7.0))
+  (doi2bib (= version))
+ ))
