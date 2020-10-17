@@ -1,5 +1,4 @@
 (library
  (name doi2bib)
  (public_name doi2bib)
- (libraries astring cohttp-lwt ezxmlm)
- (preprocess future_syntax))
+ (libraries astring cohttp-lwt ezxmlm))

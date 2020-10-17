@@ -1,0 +1,9 @@
+(executable
+ (name main)
+ (modes js)
+ (libraries cohttp-lwt-jsoo doi2bib js_of_ocaml js_of_ocaml-lwt)
+ (preprocess (pps js_of_ocaml-ppx)))
+
+(alias
+  (name default)
+  (deps main.bc.js index.html))

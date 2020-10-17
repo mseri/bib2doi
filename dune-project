@@ -14,7 +14,7 @@
  (name doi2bib)
  (synopsis "Little CLI tool to get bibtex entries out of doi or arxiv ids")
  (depends
-  (ocaml (>= 4.08))
+  (ocaml (>= 4.10))
   (astring (>= 0.8.0))
   (cohttp-lwt-unix (>= 2.5.0))
   (clap (>= 0.1.0))
@@ -27,5 +27,8 @@
  (synopsis "Little CLI tool to get bibtex entries out of doi or arxiv ids")
  (depends
   (js_of_ocaml (>= 3.7.0))
+  (js_of_ocaml-lwt (>= 3.7.0))
+  (js_of_ocaml-ppx (>= 3.7.0))
+  (cohttp-lwt-jsoo (>= 2.5.0))
   (doi2bib (= version))
  ))
