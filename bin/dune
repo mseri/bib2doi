@@ -1,5 +1,5 @@
 (executable
- (name doi2bib)
+ (name doi2bib_cli)
  (public_name doi2bib)
  (package doi2bib)
  (libraries clap cohttp-lwt-unix doi2bib)
