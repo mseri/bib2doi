@@ -6,26 +6,23 @@ exception PubMed_DOI_not_found
 
 let rec get ?proxy ?headers ?fallback uri =
   let headers = Clz_cohttp.update_header headers in
-  let uri = Option.value ~default:"" proxy ^ uri |> Uri.of_string in
+  let uri = Option.value ~default:"" proxy ^ uri in
   let open Lwt.Syntax in
-  let* resp, body = Cohttp_lwt_unix.Client.get ~headers uri in
-  let status = Cohttp_lwt.Response.status resp in
+  let* resp, body = Cohttp_lwt_unix.Client.get ~headers (Uri.of_string uri) in
+  let status = Http.Response.status resp in
   let* () =
     if status <> `OK then Cohttp_lwt.Body.drain_body body else Lwt.return_unit
   in
   match status with
   | `OK -> Clz_cohttp.decompress (resp, body)
   | `Found -> (
-      let uri' =
-        Cohttp_lwt.(resp |> Response.headers |> Cohttp.Header.get_location)
-      in
+      let uri' = Http.(resp |> Response.headers |> Header.get_location) in
       match (uri', fallback) with
-      | Some uri, _ -> get ?proxy ~headers ?fallback (Uri.to_string uri)
+      | Some uri, _ -> get ?proxy ~headers ?fallback uri
       | None, Some uri -> get ?proxy ~headers uri
       | None, None ->
-          Lwt.fail_with
-            ("Malformed redirection trying to access '" ^ Uri.to_string uri
-           ^ "'."))
+          Lwt.fail_with ("Malformed redirection trying to access '" ^ uri ^ "'.")
+      )
   | d when (d = `Not_found || d = `Gateway_timeout) && Option.is_some fallback
     -> (
       match fallback with
@@ -37,7 +34,7 @@ let rec get ?proxy ?headers ?fallback uri =
       Lwt.fail_with
         ("Response error: '"
         ^ Cohttp.Code.string_of_status status
-        ^ "' trying to access '" ^ Uri.to_string uri ^ "'.")
+        ^ "' trying to access '" ^ uri ^ "'.")
 
 let bib_of_doi ?proxy doi =
   let uri =

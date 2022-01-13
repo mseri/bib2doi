@@ -1,2 +1,2 @@
-module Http = Http
+module Client = Client
 module Parser = Parser
