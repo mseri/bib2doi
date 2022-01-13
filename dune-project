@@ -24,8 +24,8 @@
    (>= 4.08))
   (astring
    (>= 0.8.0))
-  (cohttp-lwt-unix
-   (>= 2.5.0))
+  http
+  cohttp-lwt-unix
   (cmdliner
    (>= 1.0.0))
   (clz

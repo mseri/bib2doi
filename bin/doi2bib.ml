@@ -6,18 +6,18 @@ let doi2bib id =
   match id with
   | None -> `Help (`Pager, None)
   | Some id -> (
-      match Lwt_main.run (Http.get_bib_entry @@ Parser.parse_id id) with
+      match Lwt_main.run (Client.get_bib_entry @@ Parser.parse_id id) with
       | bibtex -> `Ok (Printf.printf "%s" bibtex)
-      | exception Http.PubMed_DOI_not_found ->
+      | exception Client.PubMed_DOI_not_found ->
           err @@ Printf.sprintf "Error: unable to find a DOI entry for %s.\n" id
-      | exception Http.Entry_not_found ->
+      | exception Client.Entry_not_found ->
           err
           @@ Printf.sprintf
                "Error: unable to find any bibtex entry for %s.\n\
                 Check the ID before trying again.\n"
                id
       | exception Failure s -> err @@ Printf.sprintf "Unexpected error. %s\n" s
-      | exception Http.Bad_gateway ->
+      | exception Client.Bad_gateway ->
           err
           @@ Printf.sprintf
                "Remote server error: wait some time and try again.\n\

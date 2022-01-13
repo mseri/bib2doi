@@ -11,7 +11,8 @@ depends: [
   "dune" {>= "2.7"}
   "ocaml" {>= "4.08"}
   "astring" {>= "0.8.0"}
-  "cohttp-lwt-unix" {>= "2.5.0"}
+  "http"
+  "cohttp-lwt-unix"
   "cmdliner" {>= "1.0.0"}
   "clz" {>= "0.1.0"}
   "ezxmlm" {>= "1.1.0"}
@@ -36,3 +37,9 @@ build: [
   ]
 ]
 dev-repo: "git+https://github.com/mseri/doi2bib.git"
+pin-depends: [
+  ["http.dev" "git+https://github.com/mirage/ocaml-cohttp.git"]
+  ["cohttp.dev" "git+https://github.com/mirage/ocaml-cohttp.git"]
+  ["cohttp-lwt.dev" "git+https://github.com/mirage/ocaml-cohttp.git"]
+  ["cohttp-lwt-unix.dev" "git+https://github.com/mirage/ocaml-cohttp.git"]
+]
