@@ -159,6 +159,11 @@ jobs:
               "@opam/num": "github:dune-universe/num:num.opam#bdb2d7653e927e142b701b51d89f393471279713",
               "@opam/cmdliner": "github:dune-universe/cmdliner:cmdliner.opam#4fc08affe26642b6285cedc1d2ca7ec03127caf3",
               "@opam/checkseum": "github:mirage/checkseum:checkseum.opam#a929e09204d2de5626390a9975eb62aefee2824a",
+              "@opam/http": "github.com:mirage/ocaml-cohttp.2c63ba11309c66a634c3e05e346b7d84be7a0ef2",
+              "@opam/cohttp": "github.com:mirage/ocaml-cohttp.2c63ba11309c66a634c3e05e346b7d84be7a0ef2",
+              "@opam/cohttp-lwt": "github.com:mirage/ocaml-cohttp.2c63ba11309c66a634c3e05e346b7d84be7a0ef2",
+              "@opam/cohttp-lwt-unix": "github.com:mirage/ocaml-cohttp.2c63ba11309c66a634c3e05e346b7d84be7a0ef2",
+              "@opam/clz": "github.com:mseri/ocaml-clz.965cd934bfa29fc7bde8a082edcd4d7abdcc851c",
               "@opam/cstruct-sexp": "5.2.0",
               "@opam/ocamlfind": "1.8.1",
               "@opam/decompress": "1.4.1"
